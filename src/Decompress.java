@@ -16,13 +16,27 @@ public class Decompress {
         }
 
         FileInputStream inFile = new FileInputStream(args[0]);
+//        FileInputStream inFile = new FileInputStream("src/empty.txt");
         DataInputStream in = new DataInputStream(inFile);
         BitInputStream bitIn = new BitInputStream(in);
 
         FileOutputStream outFile = new FileOutputStream(args[1]);
         DataOutputStream out = new DataOutputStream(outFile);
-
+//        System.out.println("hi");
+//        System.out.println(bitIn.readBit());
+//        System.out.println(bitIn.readBit());
         // TODO
+        HCTree hctree = new HCTree();
+        //get the tree
+        int bytesCompressed = in.readInt();
+        hctree.setRoot(hctree.decodeHCTree(bitIn));
+        hctree.inorder(hctree.getRoot());
+
+        //decode
+        for (int i = 0; i < bytesCompressed; i++) {
+            out.writeByte(hctree.decode(bitIn));
+        }
+
 
         inFile.close();
         in.close();

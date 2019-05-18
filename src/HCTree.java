@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 /**
@@ -124,8 +125,20 @@ public class HCTree {
         }
 
         public int compareTo(HCNode o) {
-            // TODO
-            return 0;
+            //  return positive number if “this” is considered “larger” than the given object.
+            // false otherwise.
+            int result = 0;
+            if (getFreq() > o.getFreq())
+                result = 1;
+            else if (getFreq() < o.getFreq())
+                result = -1;
+            else {
+                if (getSymbol() > o.getSymbol())
+                    result = 1;
+                else
+                    result = -1;
+            }
+            return result;
         }
     }
 
@@ -141,34 +154,144 @@ public class HCTree {
 
         // initialize a priority queue of HCNode
         PriorityQueue<HCNode> pq = new PriorityQueue<>();
+        // create all leaf nodes of your HCTree with frequency
+        // values corresponding to each symbol in the freq array
+        for (int i = 0; i < freq.length; i++) {
+            if (freq[i] != 0) {
+                HCNode curNode = new HCNode((byte)i, freq[i]);
+                //add them to a Java built-in priority queue
+                pq.add(curNode);
+                leaves[i] = curNode;
+            }
 
-        // TODO
+        }
+        // build the HCTree using HCNode currently stored
+        // in the priority queue.
+        //while the size of pq is larger than 1
+        while (pq.size() > 1) {
+            //    pop the two nodes from the prority queue
+            HCNode first = pq.remove();
+            HCNode second = pq.remove();
+            //    create a new node that has c0 points to the first one and c1 to the other
+            HCNode parent = new HCNode(first.getSymbol(), first.getFreq() + second.getFreq());
+            parent.setC0(first);
+            parent.setC1(second);
+            //    update parent of the two nodes we poped
+            first.setParent(parent);
+            second.setParent(parent);
+            //    add the new node back to queue
+            pq.add(parent);
+        }
+
+        setRoot(pq.remove());
+
+
     }
 
     public void encode(byte symbol, BitOutputStream out) throws IOException{
 
-        // TODO
+        // For a given symbol, use the HCTree built before to find its
+        // encoding bits and write those bits to the given BitOutputStream.
+        HCNode curNode = leaves[symbol & 0xff];
+        ArrayList<Integer> bytes = new ArrayList<>();
+        while (curNode.parent != null) {
+            if (curNode.parent.getC0() == curNode)
+                bytes.add(0);
+            else
+                bytes.add(1);
+            curNode = curNode.parent;
+        }
+        for (int i = bytes.size() - 1; i >= 0 ; i--) {
+            System.out.println(bytes.get(i));
+            out.writeBit(bytes.get(i));
+
+        }
+
     }
 
     public byte decode(BitInputStream in) throws IOException{
 
-        // TODO
+        // Decodes the bits from BitInputStream and
+        // returns a byte that represents the symbol
+        // that is encoded by a sequence of bits from BitInputStream.
+        HCNode curNode = this.root;
+
+        while (curNode.getC0() != null && curNode.getC1() != null) {
+            int bit = in.readBit();
+            if (bit == 0)
+                curNode = curNode.getC0();
+            else
+                curNode = curNode.getC1();
+            System.out.println(bit);
+        }
 
         // found the leaf node and return the symbol
-        return 0;
+        return curNode.getSymbol();
+    }
+    public void inorder(HCNode root) {
+
+        if(root == null)
+            return;
+
+        inorder(root.getC0());
+        if(root.getC0() == null && root.getC1() == null) {
+            System.out.println(root.toString());
+            return;
+        }
+        inorder(root.getC1());
     }
 
     public void encodeHCTree(HCNode node, BitOutputStream out) throws IOException{
 
         // TODO: encode the structure of the HCTree and write it to the BitOutputStream
+        // node == null? return
+        if (node == null)
+            return;
+        // if node is a leaf => write 1, symbol
+        if (node.getC0() == null && node.getC1() == null) {
+            out.writeBit(1);
+            out.writeByte(node.getSymbol());
+        }
+        // else => write 0
+        else {
+            out.writeBit(0);
+        }
+        // recursive call node.c0, node.c1
+        encodeHCTree(node.c0, out);
+        encodeHCTree(node.c1, out);
 
     }
 
     public HCNode decodeHCTree(BitInputStream in) throws IOException {
 
         // TODO: decode bits from the given BitInputStream and build the original HCTree
-
-        return null;
+        int bit = in.readBit();
+        HCNode result = null;
+        // if bit == 1
+        //   recursive call on the rest of in, and put the returned node at c0
+        //   then recursive call on the rest of in, and put the returned node ct c1
+        //   connect them(setting parent, symbol)
+        //   return the node we created.
+        if (bit == 0) {
+            HCNode left = decodeHCTree(in);
+            HCNode right = decodeHCTree(in);
+            HCNode parent = new HCNode(left.getSymbol(), 0);
+            parent.setC0(left);
+            parent.setC1(right);
+            left.setParent(parent);
+            right.setParent(parent);
+            result = parent;
+        }
+        //else
+        //   read the next byte which is the symbol
+        //   create a node with the symbol
+        //   return this node.
+        else {
+            byte symbol = in.readByte();
+            HCNode node = new HCNode(symbol, 0);
+            result = node;
+        }
+        return result;
     }
 
 }
