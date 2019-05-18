@@ -1,4 +1,7 @@
-
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
+ */
 import java.io.*;
 import java.util.ArrayList;
 import java.util.PriorityQueue;
@@ -124,8 +127,14 @@ public class HCTree {
             return "Symbol: " + this.symbol + "; Freq: " + this.freq;
         }
 
+        /**
+         * method that compares twoo nodes
+         * @param o
+         * @return 1 if the current node is greater than the other one, -1 otherwise
+         */
         public int compareTo(HCNode o) {
-            //  return positive number if “this” is considered “larger” than the given object.
+            //  return positive number if “this” is considered
+            //  “larger” than the given object.
             // false otherwise.
             int result = 0;
             if (getFreq() > o.getFreq())
@@ -142,14 +151,26 @@ public class HCTree {
         }
     }
 
+    /**
+     * getter for the root
+     * @return root
+     */
     public HCNode getRoot() {
         return root;
     }
-    
+
+    /**
+     * setter for the root
+      * @param root
+     */
     public void setRoot(HCNode root) {
         this.root = root;
     }
-    
+
+    /**
+     * put the freq into a binary tree
+      * @param freq
+     */
     public void buildTree(int[] freq) {
 
         // initialize a priority queue of HCNode
@@ -158,7 +179,7 @@ public class HCTree {
         // values corresponding to each symbol in the freq array
         for (int i = 0; i < freq.length; i++) {
             if (freq[i] != 0) {
-                HCNode curNode = new HCNode((byte)i, freq[i]);
+                HCNode curNode = new HCNode((byte) i, freq[i]);
                 //add them to a Java built-in priority queue
                 pq.add(curNode);
                 leaves[i] = curNode;
@@ -188,6 +209,12 @@ public class HCTree {
 
     }
 
+    /**
+     * encode the symbol into bitString and stores it into BitOutputStream out
+     * @param symbol
+     * @param out
+     * @throws IOException
+     */
     public void encode(byte symbol, BitOutputStream out) throws IOException{
 
         // For a given symbol, use the HCTree built before to find its
@@ -201,14 +228,19 @@ public class HCTree {
                 bytes.add(1);
             curNode = curNode.parent;
         }
-        for (int i = bytes.size() - 1; i >= 0 ; i--) {
-            System.out.println(bytes.get(i));
+        for (int i = bytes.size() - 1; i >= 0; i--) {
             out.writeBit(bytes.get(i));
 
         }
 
     }
 
+    /**
+     * decode the bitstrign from BitInputStream in, and gets its symbol
+     * @param in
+     * @return the symbol of the founded node
+     * @throws IOException
+     */
     public byte decode(BitInputStream in) throws IOException{
 
         // Decodes the bits from BitInputStream and
@@ -222,28 +254,38 @@ public class HCTree {
                 curNode = curNode.getC0();
             else
                 curNode = curNode.getC1();
-            System.out.println(bit);
         }
 
         // found the leaf node and return the symbol
         return curNode.getSymbol();
     }
+
+    /**
+     * method that prints out our HCTree and see if it matches our drawing
+     * @param root
+     */
     public void inorder(HCNode root) {
 
-        if(root == null)
+        if (root == null)
             return;
 
         inorder(root.getC0());
-        if(root.getC0() == null && root.getC1() == null) {
+        if (root.getC0() == null && root.getC1() == null) {
             System.out.println(root.toString());
             return;
         }
         inorder(root.getC1());
     }
 
+    /**
+     * compressed the  tree for later use of decompressing the file
+     * @param node
+     * @param out
+     * @throws IOException
+     */
     public void encodeHCTree(HCNode node, BitOutputStream out) throws IOException{
 
-        // TODO: encode the structure of the HCTree and write it to the BitOutputStream
+        // encode the structure of the HCTree and write it to the BitOutputStream
         // node == null? return
         if (node == null)
             return;
@@ -262,9 +304,15 @@ public class HCTree {
 
     }
 
+    /**
+     * method for implementing decode of the tree the tree
+     * @param in
+     * @return
+     * @throws IOException
+     */
     public HCNode decodeHCTree(BitInputStream in) throws IOException {
 
-        // TODO: decode bits from the given BitInputStream and build the original HCTree
+        // decode bits from the given BitInputStream and build the original HCTree
         int bit = in.readBit();
         HCNode result = null;
         // if bit == 1

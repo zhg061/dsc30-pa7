@@ -1,5 +1,7 @@
-import sun.awt.Symbol;
-
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
+ */
 import java.io.*;
 import java.util.Scanner;
 
@@ -116,13 +118,5 @@ public class HCTreeTester{
         System.out.println(test1.decode(bitIn1));
         System.out.println(test1.decode(bitIn1));
         System.out.println(test1.decode(bitIn1));
-    }
-
-    @org.junit.Test
-    public void encodeHCTree() {
-    }
-
-    @org.junit.Test
-    public void decodeHCTree() {
     }
 }

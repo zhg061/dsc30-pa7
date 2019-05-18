@@ -1,3 +1,7 @@
+/*
+ * NAME: Zhaoyi Guo
+ * PID: A15180402
+ */
 import java.io.*;
 
 /**
@@ -6,6 +10,11 @@ import java.io.*;
 public class Decompress {
     private static final int EXP_ARG = 2; // number of expected arguments
 
+    /**
+     * method that decompresses the file while put it in a new file
+     * @param args
+     * @throws IOException
+     */
     public static void main(String[] args) throws IOException {
 
         // Check if the number of arguments is correct
@@ -16,21 +25,16 @@ public class Decompress {
         }
 
         FileInputStream inFile = new FileInputStream(args[0]);
-//        FileInputStream inFile = new FileInputStream("src/empty.txt");
         DataInputStream in = new DataInputStream(inFile);
         BitInputStream bitIn = new BitInputStream(in);
 
         FileOutputStream outFile = new FileOutputStream(args[1]);
         DataOutputStream out = new DataOutputStream(outFile);
-//        System.out.println("hi");
-//        System.out.println(bitIn.readBit());
-//        System.out.println(bitIn.readBit());
-        // TODO
+        // create a tree
         HCTree hctree = new HCTree();
-        //get the tree
+        // record the number of bytes in the file that is compressed
         int bytesCompressed = in.readInt();
         hctree.setRoot(hctree.decodeHCTree(bitIn));
-        hctree.inorder(hctree.getRoot());
 
         //decode
         for (int i = 0; i < bytesCompressed; i++) {
