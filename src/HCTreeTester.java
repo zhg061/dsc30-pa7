@@ -85,38 +85,38 @@ public class HCTreeTester{
 
     }
 
-    @org.junit.Test
-    public void encode() throws IOException {
-        outFile1 = new FileOutputStream("src/try.txt");
-        out1 = new DataOutputStream(outFile1);
-        bitOut1 = new BitOutputStream(out1);
-        symbol1 = 100;
-        symbol2 = 101;
-        symbol3 = 98;
-        symbol4 = 97;
-        test1.buildTree(array1);
-//        test1.inorder(test1.getRoot());
-        out1.writeInt(4);
-        test1.encode(symbol1, bitOut1);
-        test1.encode(symbol2, bitOut1);
-        test1.encode(symbol3, bitOut1);
-        test1.encode(symbol4, bitOut1);
-        outFile1.close();
-        out1.close();
-
-    }
-
-    @org.junit.Test
-    public void decode() throws IOException {
-        inFile1 = new FileInputStream("src/try.txt");
-        in1 = new DataInputStream(inFile1);
-        bitIn1 = new BitInputStream(in1);
-        int byteCount = in1.readInt();
-
-        test1.buildTree(array1);
-        System.out.println(test1.decode(bitIn1));
-        System.out.println(test1.decode(bitIn1));
-        System.out.println(test1.decode(bitIn1));
-        System.out.println(test1.decode(bitIn1));
-    }
+//    @org.junit.Test
+//    public void encode() throws IOException {
+//        outFile1 = new FileOutputStream("src/try.txt");
+//        out1 = new DataOutputStream(outFile1);
+//        bitOut1 = new BitOutputStream(out1);
+//        symbol1 = 100;
+//        symbol2 = 101;
+//        symbol3 = 98;
+//        symbol4 = 97;
+//        test1.buildTree(array1);
+////        test1.inorder(test1.getRoot());
+//        out1.writeInt(4);
+//        test1.encode(symbol1, bitOut1);
+//        test1.encode(symbol2, bitOut1);
+//        test1.encode(symbol3, bitOut1);
+//        test1.encode(symbol4, bitOut1);
+//        outFile1.close();
+//        out1.close();
+//
+//    }
+//
+//    @org.junit.Test
+//    public void decode() throws IOException {
+//        inFile1 = new FileInputStream("src/try.txt");
+//        in1 = new DataInputStream(inFile1);
+//        bitIn1 = new BitInputStream(in1);
+//        int byteCount = in1.readInt();
+//
+//        test1.buildTree(array1);
+//        System.out.println(test1.decode(bitIn1));
+//        System.out.println(test1.decode(bitIn1));
+//        System.out.println(test1.decode(bitIn1));
+//        System.out.println(test1.decode(bitIn1));
+//    }
 }
