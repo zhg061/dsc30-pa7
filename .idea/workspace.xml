@@ -20,7 +20,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Compress.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
+            <state relative-caret-position="109">
               <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -30,20 +30,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/singleCharcompressed.txt">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/singleChar.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="1" selection-start-column="1" selection-end-column="1" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/HCTreeTester.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1989">
@@ -64,27 +50,13 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/input2decompressed.txt">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/check1decompressed.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="16762">
-              <caret line="986" column="26" selection-start-line="986" selection-start-column="26" selection-end-line="986" selection-end-column="26" />
+            <state>
+              <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/input2compressed.txt">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="7752">
-              <caret line="456" column="58" selection-start-line="456" selection-start-column="58" selection-end-line="456" selection-end-column="58" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/singleChardecompressed.txt">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
@@ -206,11 +178,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.HCTreeTester">
-    <configuration name="Compress" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Decompress">
+    <configuration name="Compress" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Compress" />
       <module name="dsc30-pa7" />
-      <option name="PROGRAM_PARAMETERS" value="src/input2.txt src/input2compressed.txt" />
+      <option name="PROGRAM_PARAMETERS" value="src/check3.txt src/check3compressed.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -218,7 +190,7 @@
     <configuration name="Decompress" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Decompress" />
       <module name="dsc30-pa7" />
-      <option name="PROGRAM_PARAMETERS" value="src/input2compressed.txt src/input2decompressed.txt" />
+      <option name="PROGRAM_PARAMETERS" value="src/check3compressed.txt src/check3decompressed.txt" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,9 +233,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.HCTreeTester" />
         <item itemvalue="Application.Decompress" />
-        <item itemvalue="Application.Compress" />
+        <item itemvalue="JUnit.HCTreeTester" />
         <item itemvalue="JUnit.HCTreeTester.decode" />
         <item itemvalue="JUnit.HCTreeTester.encode" />
       </list>
@@ -273,9 +244,6 @@
     <configuration />
   </component>
   <component name="TestHistory">
-    <history-entry file="HCTreeTester_encode - 2019.05.17 at 19h 34m 16s.xml">
-      <configuration name="HCTreeTester.encode" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="HCTreeTester_decode - 2019.05.17 at 19h 34m 23s.xml">
       <configuration name="HCTreeTester.decode" configurationId="JUnit" />
     </history-entry>
@@ -303,17 +271,21 @@
     <history-entry file="HCTreeTester_decode - 2019.05.18 at 15h 19m 31s.xml">
       <configuration name="HCTreeTester.decode" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="HCTreeTester - 2019.05.19 at 14h 37m 04s.xml">
+      <configuration name="HCTreeTester" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6750524" visible="true" weight="0.22834007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6750524" visible="true" weight="0.22834007" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" sideWeight="0.3249476" side_tool="true" weight="0.22024292" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3428064" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22202487" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -423,16 +395,6 @@
     <entry file="file://$PROJECT_DIR$/src/input3decompressed.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Compress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/singleCharcompressed.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -440,13 +402,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="1" selection-start-column="1" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Decompress.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
@@ -493,6 +448,30 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Compress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="29" column="65" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Decompress.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/check1decompressed.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" lean-forward="true" selection-start-column="15" selection-end-column="15" />
         </state>
       </provider>
     </entry>
