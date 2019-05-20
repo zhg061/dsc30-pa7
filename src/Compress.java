@@ -42,7 +42,6 @@ public class Compress {
         // create a new tree and put the freq into the tree
         HCTree hctree = new HCTree();
         hctree.buildTree(freq);
-//        hctree.inorder(hctree.getRoot());
         FileOutputStream file = new FileOutputStream(args[1]);
         DataOutputStream out  = new DataOutputStream(file);
         BitOutputStream bitOut = new BitOutputStream(out);
